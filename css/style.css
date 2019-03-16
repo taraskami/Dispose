@@ -1,0 +1,12 @@
+body{
+    background-color: red;
+}
+
+#wrapper{
+    width: 100%;
+    height: 1000px;
+    margin: 0 auto;
+    margin-top:150px;
+    padding-top:20px;
+    background-color: blue;
+}
