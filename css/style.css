@@ -15,9 +15,6 @@ header{
 
 }
 
-#map{
-
-}
 
 #results{
     background-color: purple;
@@ -35,3 +32,7 @@ header{
     right: 5px;
     bottom:10px;
 }
+
+#map {
+    height: 100%;
+  }
