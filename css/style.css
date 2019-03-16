@@ -9,4 +9,18 @@ body{
     margin-top:150px;
     padding-top:20px;
     background-color: blue;
+    position: relative;
+}
+
+header{
+    width: 100%;
+    background-color:rgb(165, 165, 34);
+    height: 200px;
+}
+
+#menu{
+    background-color:rgb(82, 204, 204);
+    width: 100px;
+    height: 100px;
+    margin: 10px;
 }
