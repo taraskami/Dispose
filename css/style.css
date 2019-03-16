@@ -4,9 +4,34 @@ body{
 
 header{
     background-color: yellow;
+    height: 60px;
 }
 
 #wrapper{
     background-color: orange;
     width: 100%;
+    position: relative;
+    height: 100%;
+
+}
+
+#map{
+
+}
+
+#results{
+    background-color: purple;
+    position: absolute;
+    width: 25%;
+    height: 400px;
+    top: 80px;
+    right: 20px;
+}
+
+#entry{
+    position: absolute;
+    top:20px;
+    width: 25%;
+    right: 5px;
+    bottom:10px;
 }
