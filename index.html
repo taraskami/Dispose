@@ -17,7 +17,9 @@
 
             <div id="map">
                 <script>
+                    
                     var map, infoWindow;
+                    
                     function initMap() {
                         map = new google.maps.Map(document.getElementById('map'), {
                             center: { lat: -34.397, lng: 150.644 },
@@ -41,6 +43,7 @@
                             handleLocationError(false, infoWindow, map.getCenter());
                         }
                     }
+
                     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         infoWindow.setPosition(pos);
                         infoWindow.setContent(browserHasGeolocation ?
@@ -55,9 +58,9 @@
 
             </div>
             <form id="entry">
-                <input type="text" name="search_entry" class="searchbox" />
-                <div class="submit_button">
-                    <a href="" class="button btnFade btnBlueGreen" >SUBMIT</a>
+                <input type="text" name="search_entry" class="searchbox" id="address_search"/>
+                <div class="submit_button" onclick="address_search()">
+                    <a class="button btnFade btnBlueGreen" >SUBMIT</a>
                 </div>
             </form>
         </div>
