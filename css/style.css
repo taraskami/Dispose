@@ -73,19 +73,16 @@ html {
     color: black;
     font: normal 10px/1.42857 $html-font;
 }
-
 body {
     background: none;
     color: inherit;
     font: inherit;
 }
-
 a {
     color: inherit;
     cursor: pointer;
     text-decoration: none;
     &:hover
-
 {
     opacity: 1.0;
 }
