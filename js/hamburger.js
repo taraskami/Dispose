@@ -1,11 +1,17 @@
 // JavaScript source code
-<div class="nav-toggle">
-    <div class="nav-toggle-bar"></div>
-</div>
-    <nav class="nav">
-        <ul>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+(function () {
+
+    var hamburger = {
+        navToggle: document.querySelector('.nav-toggle'),
+        nav: document.querySelector('nav'),
+
+        doToggle: function (e) {
+            e.preventDefault();
+            this.navToggle.classList.toggle('expanded');
+            this.nav.classList.toggle('expanded');
+        }
+    };
+
+    hamburger.navToggle.addEventListener('click', function (e) { hamburger.doToggle(e); });
+
+}());

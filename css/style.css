@@ -1,14 +1,85 @@
-body{
-    background-color: black;
+/* imports */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+/* colors */
+$aqua: #28dde0; $plum: #5634d1;
+/* variables */
+$html-background: $plum; $html-font: 'Source Sans Pro', Helvetica, Arial, sans-serif; $nav-toggle-bar-color: white; $nav-toggle-bar-height: 0.4rem; $nav-toggle-bar-width: 3.6rem; $nav-background: $aqua; $nav-color: white; $nav-width: 20rem; $z-nav-toggle: 2; $z-nav: 1;
+/* mixins */
+@mixin box-sizing($box-sizing: border-box) {
+    -webkit-box-sizing: $box-sizing;
+    -moz-box-sizing: $box-sizing;
+    box-sizing: $box-sizing;
 }
 
-#wrapper{
-    width: 100%;
-    height: 1000px;
-    margin: 0 auto;
-    margin-top:150px;
-    padding-top:20px;
-    background-color: blue;
+@mixin center-vertically($position: absolute) {
+    position: $position;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin text-size-adjust {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+@mixin transform($transform) {
+    -ms-transform: $transform;
+    -webkit-transform: $transform;
+    transform: $transform;
+}
+
+@mixin transition($parameters: all 0.5s ease) {
+    -webkit-transition: $parameters;
+    -moz-transition: $parameters;
+    -ms-transition: $parameters;
+    -o-transition: $parameters;
+    transition: $parameters;
+}
+
+@mixin user-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/* resets and base styles */
+* {
+    @include box-sizing;
+    @include text-size-adjust;
+    &:focus
+
+{
+    outline: none;
+}
+
+}
+
+html {
+    background: $html-background;
+    color: white;
+    font: normal 10px/1.42857 $html-font;
+}
+
+body {
+    background: none;
+    color: inherit;
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover
+
+{
+    opacity: 0.8;
+}
+
 }
 
 /* nav toggle */
@@ -23,24 +94,24 @@ body{
     z-index: $z-nav-toggle;
     &:hover
 
-    {
-        opacity: 0.8;
-    }
+{
+    opacity: 0.8;
+}
 
-    .nav-toggle-bar,
-    .nav-toggle-bar::after,
-    .nav-toggle-bar::before {
-        @include center-vertically;
-        @include transition(all 0.5s ease);
-        background: $nav-toggle-bar-color;
-        content: '';
-        height: $nav-toggle-bar-height;
-        width: 100%;
-    }
+.nav-toggle-bar,
+.nav-toggle-bar::after,
+.nav-toggle-bar::before {
+    @include center-vertically;
+    @include transition(all 0.5s ease);
+    background: $nav-toggle-bar-color;
+    content: '';
+    height: $nav-toggle-bar-height;
+    width: 100%;
+}
 
-    .nav-toggle-bar {
-        margin-top: 0;
-    }
+.nav-toggle-bar {
+    margin-top: 0;
+}
 
     .nav-toggle-bar::after {
         margin-top: 2 * $nav-toggle-bar-height;
@@ -50,9 +121,9 @@ body{
         margin-top: -2 * $nav-toggle-bar-height;
     }
 
-    &.expanded .nav-toggle-bar {
-        background: transparent;
-    }
+&.expanded .nav-toggle-bar {
+    background: transparent;
+}
 
     &.expanded .nav-toggle-bar::after,
     &.expanded .nav-toggle-bar::before {
@@ -86,14 +157,14 @@ body{
     z-index: $z-nav;
     &.expanded
 
-    {
-        left: 0;
-    }
+{
+    left: 0;
+}
 
-    ul {
-        @include center-vertically;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+ul {
+    @include center-vertically;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 }
