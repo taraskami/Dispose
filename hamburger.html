@@ -4,12 +4,18 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Hamburger Menu</title>
     <style>
+
+        
         ul {
             list-style-type: none;
             position: relative;
             top: -200px;
             transition: all .5s ease;
             margin-right: 1300px;
+        }
+
+        .navigation{
+            display: inline-block;
         }
 
         .nav {
@@ -28,7 +34,7 @@
             position: relative;
             display: block;
             
-            margin: -1ex -10px -2ex -9px; /* For hamburger banner thing */
+            margin: -1ex -142px -2.2ex -10px; /* For hamburger banner thing */
             padding: 18px 20px;
             background: linear-gradient(to right, #084828, #096315);
 
@@ -41,21 +47,30 @@
         li {
             background: #084828;
             color: white;
-            padding-left: 1.25em; /* category indentation */
+            padding-left: 3em; /* category indentation */
             padding-top: 1.5ex; /* spacing between categories */
+            width: 30ex;
             margin-left: -50px;
         }
     </style>
 </head>
 <body>
     <div class="navigation">
-        <input type="checkbox" id="nav">
-        <label for="nav" class="navmenu">&#9776;</label>
-        <ul>
-            <li>Map</li>
-            <li>Information</li>
-            <li>About</li>
-        </ul>
+        <div id="burgers">
+            <input type="checkbox" id="nav">
+            <label for="nav" class="navmenu">&#9776;</label>
+            <ul>
+                <li>Map</li>
+                <li>Information</li>
+                <li>About</li>
+            </ul>
+        </div>
+        <div id="title">
+            <!--image shit-->
+        </div>
+        <div id="icon">
+            <!--icon shit-->
+        </div>
     </div>
 </body>
 </html>
