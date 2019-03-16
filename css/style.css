@@ -1,9 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
 body{
     background-color: blue;
 }
 
 header{
-    background-color: yellow;
+    background-color: #23CC00;
     height: 60px;
 }
 
@@ -15,24 +17,63 @@ header{
 
 }
 
+a{
+    text-decoration: none;
+    color: #00AE68;
+}
 
 #results{
-    background-color: purple;
+    background-color: #f5f5f5;
     position: absolute;
-    width: 25%;
+    width: 480px;
     height: 400px;
     top: 80px;
-    right: 20px;
+    right: 60px;
+    /* visibility: hidden; */
 }
 
 #entry{
     position: absolute;
-    top:20px;
-    width: 25%;
-    right: 5px;
+    width: 480px;
+    right: 60px;
     bottom:10px;
+    display: inline-block;
 }
 
 #map {
-    height: 100%;
-  }
+    height: 95%;
+}
+
+.searchbox{
+    position: relative;
+    float:left;
+    width: 330px;
+    left: 0px;
+}
+
+.submit_button{
+    float:right;
+}
+
+a.button {
+    display: block;
+    position: relative;
+    float: left;
+    width: 120px;
+    padding: 0;
+    margin: 0px 20px 0px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 30px;
+    color: #FFF;
+    border-radius: 5px;
+    transition: all 0.2s ;
+}
+
+.btnFade.btnBlueGreen:hover {
+    background: #21825B;
+}
+
+.btnBlueGreen {
+    background: #6BFF4C;
+}
