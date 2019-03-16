@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Hamburger Menu</title>
+    <style>
+        ul {
+            list-style-type: none;
+            position: relative;
+            top: -200px;
+            transition: all .5s ease;
+            margin-right: 10px;
+        }
+
+        .nav {
+            display: none;
+        }
+
+        #nav:checked ~ ul {
+            top: 0;
+        }
+
+        #nav {
+            display: none;
+        }
+
+        .navmenu {
+            position: relative;
+            display: block;
+            margin: -1ex 10px -2ex 10px;
+            padding: 5px 20px;
+            background: linear-gradient(to right, #445566, #888);
+            color: #fff;
+            z-index: 999;
+            /* The UX expert said so */
+            cursor: pointer;
+        }
+
+        li {
+            background: linear-gradient(to right, #445566, #888);
+            color: white;
+            padding-left: 5em;
+            padding-top: 1ex;
+            margin-left: -30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <input type="checkbox" id="nav">
+        <label for="nav" class="navmenu">&#9776;</label>
+        <ul>
+            <li>First entry</li>
+            <li>Second entry</li>
+            <li>Third entry</li>
+            <li>Fourth of July entry</li>
+        </ul>
+    </div>
+</body>
+</html>
