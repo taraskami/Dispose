@@ -24,7 +24,7 @@ $conn = new mysqli($servername, $username);
     <body>
         <div id="wrapper">
 
-            <h2 style="margin-left: 45%; font-family: 'Quicksand', sans-serif; font-size:55px;">Dispose</h2>
+            <h2 style="margin-left: 45%; font-family: 'Quicksand', sans-serif; font-size:55px;">testing testing Dispose</h2>
             <nav class="navbar">
                 <span class="open-slide">
                     <a href="#" onclick="openSlideMenu()">
