@@ -1,12 +1,9 @@
 <?php
 $servername = "localhost";
 $username = "dispose_access";
-
 // Create connection
 $conn = new mysqli($servername, $username);
-
 // include("php/init.php");
-
 ?>
 
 <html>
@@ -24,7 +21,7 @@ $conn = new mysqli($servername, $username);
     <body>
         <div id="wrapper">
 
-            <h2 style="margin-left: 45%; font-family: 'Quicksand', sans-serif; font-size:55px;">testing testing Dispose</h2>
+            <h2 style="margin-left: 45%; font-family: 'Quicksand', sans-serif; font-size:55px;">Dispose</h2>
             <nav class="navbar">
                 <span class="open-slide">
                     <a href="#" onclick="openSlideMenu()">
@@ -47,6 +44,19 @@ $conn = new mysqli($servername, $username);
 
             <div id="map">
                 <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
                     var customLabel = {
                         restaurant: {
                             label: 'R'
@@ -55,13 +65,11 @@ $conn = new mysqli($servername, $username);
                             label: 'B'
                         }
                     };
-
                     function initMap() {
                         var map = new google.maps.Map(document.getElementById('map'), {
                             center: { lat: 42.728, lng: -73.692 },
                             zoom: 15
                         });
-
                         var infoWindow = new google.maps.InfoWindow;
                         
                         if (navigator.geolocation) {
@@ -96,7 +104,6 @@ $conn = new mysqli($servername, $username);
                                 var point = new google.maps.LatLng(
                                     parseFloat(markerElem.getAttribute('lat')),
                                     parseFloat(markerElem.getAttribute('lng')));
-
                                 var infowindow_content = "<div> <strong>" + name + "</strong> <br /> <text>" + address
                                  + "</text> <br /> <text id='marker_id'>" + id + "</text> <br /> <text>" + type + "</text> <br /> <text>" + status + "</text> <br />";
                                 infowindow_content = infowindow_content + "<div style='display:inline-block'>";
@@ -107,7 +114,6 @@ $conn = new mysqli($servername, $username);
                                 infowindow_content = infowindow_content + "</select>";
                                 infowindow_content = infowindow_content + "<a onclick='save_data()' style='margin-left:5px;' href='#'>SUBMIT</a>";
                                 infowindow_content = infowindow_content + "</div>";
-
                                 var icon = customLabel[type] || {};
                                 var marker = new google.maps.Marker({
                                     map: map,
@@ -122,7 +128,6 @@ $conn = new mysqli($servername, $username);
                             });
                         });
                     }
-
                     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         infoWindow.setPosition(pos);
                         infoWindow.setContent(browserHasGeolocation ?
@@ -130,7 +135,6 @@ $conn = new mysqli($servername, $username);
                             'Please input address');
                         infoWindow.open(map);
                     }
-
                     function save_data() {
                         var new_status = document.getElementById('change_status').value;
                         var marker_id = document.getElementById('marker_id').textContent;
@@ -144,25 +148,19 @@ $conn = new mysqli($servername, $username);
                         });
                         window.location.reload(true);
                     }
-
                     function downloadUrl(url, callback) {
                         var request = window.ActiveXObject ?
                             new ActiveXObject('Microsoft.XMLHTTP') :
                             new XMLHttpRequest;
-
                         request.onreadystatechange = function() {
                         if (request.readyState == 4) {
                             request.onreadystatechange = doNothing;
                             callback(request, request.status);
                         }
                         };
-
                         request.open('GET', url, true);
                         request.send(null);
                     }
-
-
-
                     function doNothing() {}
                 </script>
 
@@ -171,7 +169,6 @@ $conn = new mysqli($servername, $username);
                         document.getElementById('side-menu').style.width = '250px';
                         document.getElementById('main').style.marginLeft = '250px';
                     }
-
                     function closeSlideMenu(){
                         document.getElementById('side-menu').style.width = '0';
                         document.getElementById('main').style.marginLeft = '0';
