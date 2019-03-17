@@ -6,6 +6,12 @@ html, body{
   padding: 0;
 }
 
+img{
+  position: absolute;
+  top:0;
+  right:0;
+}
+
 .navbar {
     background: linear-gradient(to right, #084828, #096315);
     overflow: hidden;
