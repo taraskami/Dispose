@@ -10,16 +10,16 @@ $conn = new mysqli($servername, $username);
 ?>
 
 <html>
-    
+
     <head>
-        <title>Dispose: Dumpster Locator and Status</title> 
+        <title>Dispose: Dumpster Locator and Status</title>
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Trocchi" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     </head>
-    
+
     <body>
         <div id="wrapper">
 
@@ -36,6 +36,9 @@ $conn = new mysqli($servername, $username);
                         </svg>
                     </a>
                 </span>
+                <div class="submit_button" id="search_submit" onclick="currentMap()">
+                    <a class="button btnFade btnBlueGreen" >Current Location</a>
+                </div>
             </nav>
 
             <div id="side-menu" class="side-nav">
@@ -47,21 +50,7 @@ $conn = new mysqli($servername, $username);
             </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 
             <div id="map">
                 <script>
@@ -73,15 +62,12 @@ $conn = new mysqli($servername, $username);
                             label: 'B'
                         }
                     };
+                    var map;
+                    var markers;
+                    function currentMap() {
 
-                    function initMap() {
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                            center: { lat: 42.728, lng: -73.692 },
-                            zoom: 15
-                        });
 
-                        var infoWindow = new google.maps.InfoWindow;
-                        
+
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(function (position) {
                                 var current_location = {
@@ -90,9 +76,7 @@ $conn = new mysqli($servername, $username);
                                 };
                                 map.setCenter(current_location);
                                 var current_location_marker = new google.maps.Marker({position: current_location, map: map});
-                                infoWindow.setPosition(current_location);
-                                infoWindow.setContent('Current location');
-                                infoWindow.open(map);
+
                             }, function () {
                                 handleLocationError(true, infoWindow, map.getCenter());
                             });
@@ -100,7 +84,94 @@ $conn = new mysqli($servername, $username);
                             // Browser doesn't support Geolocation
                             handleLocationError(false, infoWindow, map.getCenter());
                         }
-                        
+                        // Clear out the old markers.
+                        markers.forEach(function(marker) {
+                          marker.setMap(null);
+                        });
+                        markers = [];
+                      }
+
+                    function initMap() {
+                         map = new google.maps.Map(document.getElementById('map'), {
+                            center: { lat: 42.728, lng: -73.692 },
+                            zoom: 15
+                        });
+
+                        var infoWindow = new google.maps.InfoWindow;
+
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(function (position) {
+                                var current_location = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude
+                                };
+                                map.setCenter(current_location);
+                                var current_location_marker = new google.maps.Marker({position: current_location, map: map});
+
+                            }, function () {
+                                handleLocationError(true, infoWindow, map.getCenter());
+                            });
+                        } else {
+                            // Browser doesn't support Geolocation
+                            handleLocationError(false, infoWindow, map.getCenter());
+                        }
+                        var input = document.getElementById('pac-input');
+                        var searchBox = new google.maps.places.SearchBox(input);
+                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                        // Bias the SearchBox results towards current map's viewport.
+                        map.addListener('bounds_changed', function() {
+                          searchBox.setBounds(map.getBounds());
+                        });
+
+                        markers = [];
+                        // Listen for the event fired when the user selects a prediction and retrieve
+                        // more details for that place.
+                        searchBox.addListener('places_changed', function() {
+                          var places = searchBox.getPlaces();
+
+                          if (places.length == 0) {
+                            return;
+                          }
+
+                          // Clear out the old markers.
+                          markers.forEach(function(marker) {
+                            marker.setMap(null);
+                          });
+                          markers = [];
+
+                          // For each place, get the icon, name and location.
+                          var bounds = new google.maps.LatLngBounds();
+                          places.forEach(function(place) {
+                            if (!place.geometry) {
+                              console.log("Returned place contains no geometry");
+                              return;
+                            }
+                            var icon = {
+                              url: place.icon,
+                              size: new google.maps.Size(71, 71),
+                              origin: new google.maps.Point(0, 0),
+                              anchor: new google.maps.Point(17, 34),
+                              scaledSize: new google.maps.Size(25, 25)
+                            };
+
+                            // Create a marker for each place.
+                            markers.push(new google.maps.Marker({
+                              map: map,
+                              icon: icon,
+                              title: place.name,
+                              position: place.geometry.location
+                            }));
+
+                            if (place.geometry.viewport) {
+                              // Only geocodes have viewport.
+                              bounds.union(place.geometry.viewport);
+                            } else {
+                              bounds.extend(place.geometry.location);
+                            }
+                          });
+                          map.fitBounds(bounds);
+                        });
                         // Change this depending on the name of your PHP or XML file
                         downloadUrl('php/load_markers.php', function(data) {
                             var xml = data.responseXML;
@@ -162,6 +233,7 @@ $conn = new mysqli($servername, $username);
                     }
 
                     function doNothing() {}
+
                 </script>
 
                 <script>
@@ -174,9 +246,10 @@ $conn = new mysqli($servername, $username);
                         document.getElementById('side-menu').style.width = '0';
                         document.getElementById('main').style.marginLeft = '0';
                     }
+
                 </script>
-                
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-E5Sxgxe5r8P7i4SP-ggNIoKNpvrPEhg&callback=initMap"></script>
+
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-E5Sxgxe5r8P7i4SP-ggNIoKNpvrPEhg&libraries=places&callback=initMap"></script>
             </div>
             <div id="right_controls">
                 <div class="submit_button" onclick="">
@@ -187,7 +260,7 @@ $conn = new mysqli($servername, $username);
                 </div>
             </div>
             <div id="results">
-                
+
             </div>
             <form id="entry">
                 <input type="text" name="search_entry" class="searchbox" id="address_search"/>
