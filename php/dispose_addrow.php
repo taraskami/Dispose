@@ -33,7 +33,7 @@ $status_sql = mysqli_real_escape_string($connection, $status);
 
 // Inserts new row with place data.
 $query = sprintf("INSERT INTO markers " .
-         " (id, name, address, lat, lng, type, status) " .
+         " (id, name, address, lat, lng, type, status ) " .
          " VALUES (NULL, '$name_sql', '$address_sql', '$lat_sql', '$lng_sql', '$type_sql', '$status_sql');");
 
 $result = mysqli_query($connection, $query);

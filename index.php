@@ -4,6 +4,9 @@ $username = "dispose_access";
 
 // Create connection
 $conn = new mysqli($servername, $username);
+
+// include("php/init.php");
+
 ?>
 
 <html>
@@ -12,6 +15,7 @@ $conn = new mysqli($servername, $username);
         <title>Dispose: Dumpster Locator and Status</title> 
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Trocchi" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     </head>
@@ -19,6 +23,10 @@ $conn = new mysqli($servername, $username);
     <body>
         
         <div id="wrapper">
+
+            <div class="title">
+                <h2>Dispose</h2>
+            </div>
             <nav class="navbar">
                 <span class="open-slide">
                     <a href="#" onclick="openSlideMenu()">
@@ -33,10 +41,10 @@ $conn = new mysqli($servername, $username);
 
             <div id="side-menu" class="side-nav">
                 <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
+                <a href="index.php">Home</a>
+                <a href="about.html">About</a>
+                <a href="information.html">Information</a>
+                <a href="contact.html">Contact</a>
             </div>
 
             <div id="map">
