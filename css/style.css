@@ -14,12 +14,12 @@ a{
 
 #results{
     background-color: #f5f5f5;
+    visibility: hidden;
     position: absolute;
     width: 480px;
     height: 400px;
     top: 80px;
     right: 60px;
-    /* visibility: hidden; */
 }
 
 #entry{
@@ -43,8 +43,8 @@ a{
     left: 0px;
 }
 
-.submit_button{
-    float:right;
+#search_submit{
+  float:right;
 }
 
 a.button {
