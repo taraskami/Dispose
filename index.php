@@ -17,15 +17,14 @@ $conn = new mysqli($servername, $username);
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Trocchi" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
     </head>
     
     <body>
         <div id="wrapper">
 
-            <div class="title">
-                <h2>Dispose</h2>
-            </div>
+            <h2 style="margin-left: 45%; font-family: 'Quicksand', sans-serif; font-size:55px;">Dispose</h2>
             <nav class="navbar">
                 <span class="open-slide">
                     <a href="#" onclick="openSlideMenu()">
@@ -45,23 +44,6 @@ $conn = new mysqli($servername, $username);
                 <a href="information.html">Information</a>
                 <a href="contact.html">Contact</a>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <div id="map">
                 <script>
@@ -89,10 +71,10 @@ $conn = new mysqli($servername, $username);
                                     lng: position.coords.longitude
                                 };
                                 map.setCenter(current_location);
-                                var current_location_marker = new google.maps.Marker({position: current_location, map: map});
-                                infoWindow.setPosition(current_location);
-                                infoWindow.setContent('Current location');
-                                infoWindow.open(map);
+                                var current_location_marker = new google.maps.Marker({position: current_location, map: map, icon: {url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}});
+                                // infoWindow.setPosition(current_location);
+                                // infoWindow.setContent('Current location');
+                                // infoWindow.open(map);
                             }, function () {
                                 handleLocationError(true, infoWindow, map.getCenter());
                             });
@@ -130,7 +112,8 @@ $conn = new mysqli($servername, $username);
                                 var marker = new google.maps.Marker({
                                     map: map,
                                     position: point,
-                                    label: icon.label
+                                    label: icon.label,
+                                    icon: {url: "img/dumpster_icon.png"}
                                 });
                                 marker.addListener('click', function() {
                                     infoWindow.setContent(infowindow_content);
@@ -197,7 +180,7 @@ $conn = new mysqli($servername, $username);
                 
                 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-E5Sxgxe5r8P7i4SP-ggNIoKNpvrPEhg&callback=initMap"></script>
             </div>
-            <div id="right_controls">
+            <!-- <div id="right_controls">
                 <div class="submit_button" onclick="">
                     <a class="button btnFade btnBlueGreen" >SUBMIT</a>
                 </div>
@@ -205,15 +188,15 @@ $conn = new mysqli($servername, $username);
                     <a class="button btnFade btnBlueGreen" >SUBMIT</a>
                 </div>
             </div>
-            <div id="results">
+            <div id="results"> -->
                 
             </div>
-            <form id="entry">
+            <!-- <form id="entry">
                 <input type="text" name="search_entry" class="searchbox" id="address_search"/>
                 <div class="submit_button" id="search_submit" onclick="address_search()">
                     <a class="button btnFade btnBlueGreen" >SUBMIT</a>
                 </div>
-            </form>
+            </form> -->
         </div>
     </body>
 </html>
