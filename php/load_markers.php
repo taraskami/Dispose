@@ -48,6 +48,7 @@ while ($row = @mysqli_fetch_assoc($result)){
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
   echo 'type="' . $row['type'] . '" ';
+  echo 'status="' . $row['status'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }

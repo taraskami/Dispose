@@ -110,19 +110,22 @@ $conn = new mysqli($servername, $username);
                                 var name = markerElem.getAttribute('name');
                                 var address = markerElem.getAttribute('address');
                                 var type = markerElem.getAttribute('type');
+                                var status = markerElem.getAttribute('status');
                                 var point = new google.maps.LatLng(
                                     parseFloat(markerElem.getAttribute('lat')),
                                     parseFloat(markerElem.getAttribute('lng')));
 
-                                var infowincontent = document.createElement('div');
-                                var strong = document.createElement('strong');
-                                strong.textContent = name
-                                infowincontent.appendChild(strong);
-                                infowincontent.appendChild(document.createElement('br'));
+                                var infowindow_content = "<div> <strong>" + name + "</strong> <br /> <text>" + address
+                                 + "</text> <br /> <text id='marker_id'>" + id + "</text> <br /> <text>" + type + "</text> <br /> <text>" + status + "</text> <br />";
+                                infowindow_content = infowindow_content + "<div style='display:inline-block'>";
+                                infowindow_content = infowindow_content + "<select id='change_status'> <option value='empty'> empty </option>";
+                                infowindow_content = infowindow_content + "<option value='half'> half </option>";
+                                infowindow_content = infowindow_content + "<option value='full'> full </option>";
+                                infowindow_content = infowindow_content + "<option value='overflowing'> overflowing </option>";
+                                infowindow_content = infowindow_content + "</select>";
+                                infowindow_content = infowindow_content + "<a onclick='save_data()' style='margin-left:5px;' href='#'>SUBMIT</a>";
+                                infowindow_content = infowindow_content + "</div>";
 
-                                var text = document.createElement('text');
-                                text.textContent = address
-                                infowincontent.appendChild(text);
                                 var icon = customLabel[type] || {};
                                 var marker = new google.maps.Marker({
                                     map: map,
@@ -130,7 +133,7 @@ $conn = new mysqli($servername, $username);
                                     label: icon.label
                                 });
                                 marker.addListener('click', function() {
-                                    infoWindow.setContent(infowincontent);
+                                    infoWindow.setContent(infowindow_content);
                                     infoWindow.open(map, marker);
                                 });
                             });
@@ -143,6 +146,20 @@ $conn = new mysqli($servername, $username);
                             'Please input address' :
                             'Please input address');
                         infoWindow.open(map);
+                    }
+
+                    function save_data() {
+                        var new_status = document.getElementById('change_status').value;
+                        var marker_id = document.getElementById('marker_id').textContent;
+                        console.log("Marker ID is " + marker_id);
+                        var url = 'php/dispose_modifyrow.php?id='+marker_id+'&status='+new_status;
+                        downloadUrl(url, function(data, responseCode) {
+                            if (responseCode == 200 && data.length <= 1) {
+                                infowindow.close();
+                                messagewindow.open(map, marker);
+                            }
+                        });
+                        window.location.reload(true);
                     }
 
                     function downloadUrl(url, callback) {
@@ -160,6 +177,8 @@ $conn = new mysqli($servername, $username);
                         request.open('GET', url, true);
                         request.send(null);
                     }
+
+
 
                     function doNothing() {}
                 </script>
