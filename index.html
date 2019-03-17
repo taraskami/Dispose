@@ -4,16 +4,32 @@
         <title>Dispose: Dumpster Locator and Status</title> 
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/hamburger.css">
-        <script src="js/hamburger.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        
     </head>
     
     <body>
         
         <div id="wrapper">
-            <header>
+            <nav class="navbar">
+                <span class="open-slide">
+                    <a href="#" onclick="openSlideMenu()">
+                        <svg width="30" height="30">
+                            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+                            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+                            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+                        </svg>
+                    </a>
+                </span>
+            </nav>
 
-            </header>
+            <div id="side-menu" class="side-nav">
+                <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
 
             <div id="map">
                 <script>
@@ -52,8 +68,20 @@
                         infoWindow.open(map);
                     }
                 </script>
+                <script>
+                    function openSlideMenu(){
+                        document.getElementById('side-menu').style.width = '250px';
+                        document.getElementById('main').style.marginLeft = '250px';
+                    }
+
+                    function closeSlideMenu(){
+                        document.getElementById('side-menu').style.width = '0';
+                        document.getElementById('main').style.marginLeft = '0';
+                    }
+                </script>
                 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-E5Sxgxe5r8P7i4SP-ggNIoKNpvrPEhg&callback=initMap"></script>
             </div>
+
             <div id="results">
 
             </div>
