@@ -1,21 +1,21 @@
 html, body{
-  background-color:#f4f4f4;
+  background-color: #084828;
   overflow-x:hidden;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-.navbar{
-  background-color:#3b5998;
-  overflow:hidden;
-  height:8%;
+.navbar {
+    background: linear-gradient(to right, #084828, #096315);
+    overflow: hidden;
+    height: 8%;
 }
 
 .navbar a{
   float:left;
   display:block;
-  color:#f2f2f2;
+  color: #084828;
   text-align:center;
   padding:14px 16px;
   text-decoration:none;
@@ -32,25 +32,25 @@ html, body{
   color:#000;
 }
 
-.side-nav{
-  height:100%;
-  width:0;
-  position:fixed;
-  z-index:1;
-  top:0;
-  left:0;
-  background-color:#111;
-  opacity:0.9;
-  overflow-x:hidden;
-  padding-top:5%;
-  transition:0.5s;
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #084828;
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 5%;
+    transition: 0.5s;
 }
 
 .side-nav a{
   padding:10px 10px 10px 30px;
   text-decoration:none;
   font-size:22px;
-  color:#ccc;
+  color: white;
   display:block;
   transition:0.3s;
 }
