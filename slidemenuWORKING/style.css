@@ -73,6 +73,10 @@ img{
   margin-left:50px;
 }
 
+#contactBody{
+    background: white;
+}
+
 #main{
   transition:margin-left 0.5s;
   overflow:hidden;

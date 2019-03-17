@@ -1,15 +1,43 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <title>Contact</title>
-    </head>
-    <body>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <title>Contact</title>
+
+    <nav class="navbar">
+        <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
+
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Information</a>
+        <a href="#">Contact</a>
+    </div>
+
+</head>
+<body>
+
+    <div id="contactBody">
         <h1>Contact Information</h1>
         <p>This product is brought to you by the 27 Beman Lane gang.</p>
         <p>-Taras Kaminsky, Karthik Imayavaraban, Gary Wang, and Howard Zhao</p>
-        <p><br/></p>
+        <p><br /></p>
         <p>This product is created for the 2019 HackRPI</p>
-    </body>
+    </div>
+
+    
+</body>
 </html>
